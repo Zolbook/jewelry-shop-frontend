@@ -1,14 +1,10 @@
 
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
-import TestWrapper from './test-utils'; 
+import { render, screen } from './test-utils'; 
 
 test('renders learn react link', () => {
-  render(
-    <TestWrapper>
-      <App />
-    </TestWrapper>
-  );
-  
+  render(<App />); // Use the custom render function
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
 });
