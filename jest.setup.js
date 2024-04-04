@@ -1,4 +1,4 @@
-window.matchMedia = window.matchMedia || function() {
+global.window.matchMedia = global.window.matchMedia || function() {
     return {
         matches: false,
         addListener: function() {},
