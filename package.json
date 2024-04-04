@@ -2,9 +2,7 @@
   "name": "lab2",
   "version": "0.1.0",
   "private": true,
-  "jest": {
-    "setupFilesAfterEnv": ["./jest.setup.js"]
-  },
+ 
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
