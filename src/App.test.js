@@ -1,10 +1,27 @@
+import { render, screen } from '@testing-library/react';
+import App from './App'; 
+import DataProvider from './Context'; 
 
-import React from 'react';
-import App from './App';
-import { render, screen } from './test-utils'; 
 
-test('renders learn react link', () => {
-  render(<App />); // Use the custom render function
-  const linkElement = screen.getByText(/learn react/i);
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve({ products: [{ /* Mock product data */ }] }),
+  })
+);
+
+// Clear mock before each test
+beforeEach(() => {
+  fetch.mockClear();
+});
+
+test('renders App component with DataContext', async () => {
+  render(
+    <DataProvider>
+      <App />
+    </DataProvider>
+  );
+
+
+  const linkElement = await screen.findByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
